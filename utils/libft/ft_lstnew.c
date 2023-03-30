@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 13:45:13 by mortins-          #+#    #+#             */
-/*   Updated: 2023/03/30 19:15:24 by mortins-         ###   ########.fr       */
+/*   Created: 2022/11/16 15:12:04 by mortins-          #+#    #+#             */
+/*   Updated: 2023/03/30 19:26:18 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../src/push_swap.h"
 
-//	Converts the initial portion of the string 's' to int
+//	Returns a new node with 'data' as its content
 
-long	ft_atoi(const char *s)
+t_stack	*ft_lstnew(int data)
 {
-	long	num;
-	int		i;
-	int		neg;
+	t_stack	*node;
 
-	i = 0;
-	neg = 1;
-	num = 0;
-	while ((s[i] >= '\t' && s[i] <= '\r') || s[i] == ' ')
-		i++;
-	if (s[i] == '-')
-		neg = -1;
-	if (s[i] == '+' || s[i] == '-')
-		i++;
-	while (s[i] >= '0' && s[i] <= '9')
-	{
-		num = (num * 10) + (s[i] - '0');
-		i++;
-	}
-	return (num * neg);
+	node = (t_stack *)malloc(sizeof(t_stack));
+	if (!node)
+		return (NULL);
+	node -> data = data;
+	node -> next = NULL;
+	return (node);
 }

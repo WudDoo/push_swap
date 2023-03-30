@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:28:00 by mortins-          #+#    #+#             */
-/*   Updated: 2023/03/24 19:50:46 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:42:33 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,28 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
+	t_stack	*stack_a = NULL;
 
 	if (argc <= 2)
 		return (0);
 	make_list(argc, argv, &stack_a);
+	while (stack_a)
+	{
+		printf("%i\n", stack_a->data);
+		stack_a = stack_a->next;
+	}
 }
 
-int	make_list(int argc, char **argv, t_stack *stack)
+int	make_list(int argc, char **argv, t_stack **stack)
 {
 	t_stack	*node;
-	char	**list;
 	int		i;
 
-	i = 0;
-	list = ft_split(argv[1], ' ');
+	i = 1;
 	while (i < argc)
 	{
-		node = ft_lstnew(ft_atoi(list[i++]));
-		ft_lstadd_back(&stack, node);
+		node = ft_lstnew(ft_atoi(argv[i++]));
+		ft_lstadd_back(stack, node);
 	}
-	while (node->next)
-	{
-		printf("%li", stack->content);
-		sta = node->next;
-	}
+	return (0);
 }

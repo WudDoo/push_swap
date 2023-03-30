@@ -1,33 +1,34 @@
 # -*- MakeFile -*-
 
-NAME	=	push_swap
-CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra
-RM		=	rm -rf
+NAME		=	push_swap
+CC			=	gcc
+CFLAGS		=	-Wall -Werror -Wextra
+RM			=	rm -rf
 
-INC		=	-I utils/libft
+LFT_SRCS	=	utils/libft/ft_atoi.c utils/libft/ft_lstadd_back.c utils/libft/ft_lstnew.c utils/libft/ft_lstlast.c \
+				utils/libft/ft_strlcpy.c utils/libft/ft_strlen.c
 
-PS_SRCS		=	src/push_swap.c
-LFT_SRCS	=	utils/libft/ft_atoi.c utils/libft/ft_split.c /utils/libft/lstadd_back_bonus.c /utils/libft/lstnew_bonus.c
+PUSH_SRCS	=	src/push_swap.c
 
-SRCS	=	$(LFT_SRCS) $(PS_SRCS)
-OBJS	=	$(patsubst utils/libft/%, obj/%, $(LFT_SRCS:%.c=%.o)) $(patsubst src/%, obj/%, $(PS_SRCS:%.c=%.o))
+SRCS		=	$(LFT_SRCS) $(PUSH_SRCS)
 
-PHONY:	all clean fclean re
+OBJS		=	$(patsubst utils/libft/%, obj/%, $(LFT_SRCS:%.c=%.o)) $(patsubst src/%, obj/%, $(PUSH_SRCS:%.c=%.o))
 
-all:	$(NAME)
+.PHONY:		all clean fclean re
+
+all:		$(NAME)
 
 $(NAME):	$(OBJS)
-	@$(CC) $(CFLAGS) -g $(INC) $(SRCS) -o $@
+			@$(CC) $(CFLAGS) -g $(SRCS) -o $@
 
-obj/%.o:	$(SRCS)
-	@mkdir -p obj
-	@$(CC) $(CFLAGS) -o $@ -c $<
+$(OBJS):	$(SRCS)
+			@mkdir -p obj
+			@$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	@$(RM) $(OBJS)
+			@$(RM) obj
 
-fclean:	clean
-	@$(RM) $(NAME)
+fclean:		clean
+			@$(RM) $(NAME)
 
-re:	fclean all
+re:			fclean all
