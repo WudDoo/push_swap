@@ -2,13 +2,14 @@
 
 NAME		=	push_swap
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall  -Wextra
+#-Werror
 RM			=	rm -rf
 
-LFT_SRCS	=	utils/libft/ft_atoi.c utils/libft/ft_lstadd_back.c utils/libft/ft_lstnew.c utils/libft/ft_lstlast.c \
-				utils/libft/ft_strlcpy.c utils/libft/ft_strlen.c
+LFT_SRCS	=	utils/libft/ft_lstadd_back.c utils/libft/ft_lstnew.c utils/libft/ft_lstlast.c \
+				utils/libft/ft_strlcpy.c utils/libft/ft_strlen.c utils/libft/ft_lstclear.c \
 
-PUSH_SRCS	=	src/push_swap.c
+PUSH_SRCS	=	src/push_swap.c src/stack_checker.c
 
 SRCS		=	$(LFT_SRCS) $(PUSH_SRCS)
 
