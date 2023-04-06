@@ -14,8 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a = NULL;
+	t_stack	*stack_a;
 
+	stack_a = NULL;
 	if (argc < 2)
 		return (0);
 	check_dupes(argc, argv);

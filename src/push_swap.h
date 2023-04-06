@@ -24,10 +24,10 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-int		make_list(int argc, char **argv, t_stack **stack);
-int		ft_atoi(const char *s, t_stack **stack);
-void	stack_error(t_stack **stack);
-void	check_dupes(int argc, char **argv);
+int				make_list(int argc, char **argv, t_stack **stack);
+int				ft_atoi(const char *s, t_stack **stack);
+void			stack_error(t_stack **stack);
+void			check_dupes(int argc, char **argv);
 
 // V----------------------------- Libft ------------------------------V //
 

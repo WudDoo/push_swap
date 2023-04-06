@@ -16,7 +16,7 @@ void	stack_error(t_stack **stack)
 {
 	if (stack)
 		ft_lstclear(stack);
-	write(2, "ERROR\n",6);
+	write(2, "ERROR\n", 6);
 	exit (0);
 }
 
@@ -24,9 +24,9 @@ void	check_dupes(int argc, char **argv)
 {
 	int	n;
 	int	i;
-	
+
 	n = 1;
-	if	(ft_strlen(argv[n]) > 11)
+	if (ft_strlen(argv[n]) > 11)
 		stack_error(NULL);
 	while (n < (argc - 1))
 	{

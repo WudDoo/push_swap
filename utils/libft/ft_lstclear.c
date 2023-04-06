@@ -22,7 +22,6 @@ void	ft_lstclear(t_stack **lst)
 	temp = *lst;
 	while (temp)
 	{
-		
 		*lst = (*lst)-> next;
 		temp -> data = 0;
 		free(temp);
