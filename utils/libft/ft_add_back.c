@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 13:38:13 by mortins-          #+#    #+#             */
-/*   Updated: 2023/03/30 19:17:10 by mortins-         ###   ########.fr       */
+/*   Created: 2022/11/18 15:13:48 by mortins-          #+#    #+#             */
+/*   Updated: 2023/03/30 19:15:29 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../src/push_swap.h"
 
-//	Copies up to 'size' - 1 characters from the string 'src' to 'dst'
+//	Adds the node ’new’ at the end of the list 'lst'
 
-unsigned int	ft_strlcpy(char *dest, const char *src, size_t size)
+void	ft_add_back(t_stack **lst, t_stack *new)
 {
-	unsigned int	i;
-
-	i = 0;
-	if (size)
+	if (ft_last(*lst))
 	{
-		while (src[i] && (i < size - 1))
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
+		new->previous = ft_last(*lst);
+		ft_last(*lst)->next = new;
 	}
-	return (ft_strlen(src));
+	else
+		*lst = new;
 }

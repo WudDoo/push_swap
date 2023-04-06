@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 15:12:04 by mortins-          #+#    #+#             */
-/*   Updated: 2023/03/30 19:26:18 by mortins-         ###   ########.fr       */
+/*   Created: 2022/11/18 16:15:48 by mortins-          #+#    #+#             */
+/*   Updated: 2023/04/05 16:24:48 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../src/push_swap.h"
 
-//	Returns a new node with 'data' as its content
+//	Deletes and frees the given node and all of its successors
+//	using the function ’del’ and free
 
-t_stack	*ft_lstnew(int data)
+void	ft_clear(t_stack **lst)
 {
-	t_stack	*node;
+	t_stack	*temp;
 
-	node = (t_stack *)malloc(sizeof(t_stack));
-	if (!node)
-		return (NULL);
-	node -> data = data;
-	node -> next = NULL;
-	return (node);
+	temp = *lst;
+	while (temp)
+	{
+		*lst = (*lst)->next;
+		temp->data = 0;
+		free(temp);
+		temp = *lst;
+	}
 }

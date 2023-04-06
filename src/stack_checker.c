@@ -15,7 +15,7 @@
 void	stack_error(t_stack **stack)
 {
 	if (stack)
-		ft_lstclear(stack);
+		ft_clear(stack);
 	write(2, "ERROR\n", 6);
 	exit (0);
 }

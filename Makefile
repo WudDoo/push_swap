@@ -6,10 +6,10 @@ CFLAGS		=	-Wall  -Wextra
 #-Werror
 RM			=	rm -rf
 
-LFT_SRCS	=	utils/libft/ft_lstadd_back.c utils/libft/ft_lstnew.c utils/libft/ft_lstlast.c \
-				utils/libft/ft_strlcpy.c utils/libft/ft_strlen.c utils/libft/ft_lstclear.c \
+LFT_SRCS	=	utils/libft/ft_add_back.c utils/libft/ft_new.c utils/libft/ft_last.c \
+				utils/libft/ft_strlen.c utils/libft/ft_clear.c \
 
-PUSH_SRCS	=	src/push_swap.c src/stack_checker.c
+PUSH_SRCS	=	src/push_swap.c src/stack_checker.c src/sorters.c
 
 SRCS		=	$(LFT_SRCS) $(PUSH_SRCS)
 
