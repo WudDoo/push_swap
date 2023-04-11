@@ -6,11 +6,9 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:39:11 by mortins-          #+#    #+#             */
-/*   Updated: 2023/04/06 17:39:11 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/04/11 19:51:32 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include"push_swap.h"
 
@@ -43,12 +41,24 @@ void	rev_rotate(t_stack **stack)
 	t_stack	*rotate;
 	int		tmp;
 
-	rotate = ft_last(*stack);
-	tmp = ft_last(rotate)->data;
+	rotate = stk_last(*stack);
+	tmp = stk_last(rotate)->data;
 	while (rotate->previous)
 	{
 		rotate = rotate->previous;
 		rotate->next->data = rotate->data;
 	}
 	rotate->data = tmp;
+}
+
+void	push(t_stack **src, t_stack **dest)
+{
+	t_stack	*tmp;
+
+	if (!src)
+		return ;
+	tmp = *src;
+	(*src)->previous = NULL;
+	*src = (*src)->next;
+	stk_add_front(dest, tmp);
 }

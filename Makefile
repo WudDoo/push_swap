@@ -1,35 +1,34 @@
-# -*- MakeFile -*-
+ # -*- MakeFile -*-
 
 NAME		=	push_swap
-CC			=	gcc
-CFLAGS		=	-Wall  -Wextra
-#-Werror
+CC			=	cc
+CFLAGS		=	-Wall -Werror -Wextra
 RM			=	rm -rf
 
-LFT_SRCS	=	utils/libft/ft_add_back.c utils/libft/ft_new.c utils/libft/ft_last.c \
-				utils/libft/ft_strlen.c utils/libft/ft_clear.c \
+SRC_FILES	=	push_swap.c stack_checker.c sorters.c stack_fts.c stack_fts2.c
 
-PUSH_SRCS	=	src/push_swap.c src/stack_checker.c src/sorters.c
+SRCS		=	$(patsubst %, src/%, $(SRC_FILES))
 
-SRCS		=	$(LFT_SRCS) $(PUSH_SRCS)
-
-OBJS		=	$(patsubst utils/libft/%, obj/%, $(LFT_SRCS:%.c=%.o)) $(patsubst src/%, obj/%, $(PUSH_SRCS:%.c=%.o))
+OBJS		=	$(patsubst src/%, obj/%, $(SRCS:%.c=%.o))
 
 .PHONY:		all clean fclean re
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			@$(CC) $(CFLAGS) -g $(SRCS) -o $@
+	@$(MAKE) bonus --no-print-directory -C libft
+	@$(CC) $(CFLAGS) -g $(SRCS) libft/libft.a -o $@
 
 $(OBJS):	$(SRCS)
-			@mkdir -p obj
-			@$(CC) $(CFLAGS) -o $@ -c $<
+	@mkdir -p obj
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-			@$(RM) obj
+	@$(RM) obj
+	@$(MAKE) clean --no-print-directory -C libft
 
 fclean:		clean
-			@$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@$(MAKE) fclean --no-print-directory -C libft
 
-re:			fclean all
+re:			fclean all 
