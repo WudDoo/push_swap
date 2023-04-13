@@ -5,30 +5,30 @@ CC			=	cc
 CFLAGS		=	-Wall -Werror -Wextra
 RM			=	rm -rf
 
-SRC_FILES	=	push_swap.c stack_checker.c sorters.c stack_fts.c stack_fts2.c
+C_FILES	=	push_swap.c stack.c sorters.c stack_utils.c stack_utils2.c utils.c
 
-SRCS		=	$(patsubst %, src/%, $(SRC_FILES))
+SRCS		=	$(addprefix src/, $(C_FILES))
 
-OBJS		=	$(patsubst src/%, obj/%, $(SRCS:%.c=%.o))
+OBJS		=	$(addprefix obj/, $(C_FILES:%.c=%.o))
 
-.PHONY:		all clean fclean re
+.PHONY:		all val clean fclean re
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-	@$(MAKE) bonus --no-print-directory -C libft
-	@$(CC) $(CFLAGS) -g $(SRCS) libft/libft.a -o $@
+	@$(CC) $(CFLAGS) -g $(SRCS) -o $@
 
 $(OBJS):	$(SRCS)
 	@mkdir -p obj
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
+val:	$(NAME)
+	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./push_swap 7 3 5 1 2
+
 clean:
 	@$(RM) obj
-	@$(MAKE) clean --no-print-directory -C libft
 
 fclean:		clean
 	@$(RM) $(NAME)
-	@$(MAKE) fclean --no-print-directory -C libft
 
 re:			fclean all 
