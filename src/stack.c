@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:55:19 by mortins-          #+#    #+#             */
-/*   Updated: 2023/04/13 17:55:38 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:36:42 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	make_stack(int argc, char **argv, t_stack **stack)
 		j = 1;
 		while (j < argc)
 		{
-			if (ps_atoi(argv[i], stack) > ps_atoi(argv[j], stack))
+			if (ps_atoi(argv[i]) > ps_atoi(argv[j]))
 				n++;
 			j++;
 		}
@@ -38,32 +38,46 @@ int	make_stack(int argc, char **argv, t_stack **stack)
 	return (0);
 }
 
-void	stk_error(t_stack **stack)
+void	stk_error(void)
 {
-	if (stack)
-		stk_clear(stack);
 	write(2, "ERROR\n", 6);
 	exit (0);
 }
 
-void	check_list(int argc, char **argv)
+int	check_format(int argc, char **argv)
 {
 	int	n;
 	int	i;
 
 	n = 1;
 	if (ft_strlen(argv[n]) > 11)
-		stk_error(NULL);
+		stk_error();
 	while (n < (argc - 1))
 	{
 		i = n + 1;
 		while (i < argc)
 		{
-			if (ft_strlen(argv[i]) > 11 || (ps_atoi(argv[n], NULL) == \
-			ps_atoi(argv[i], NULL)))
-				stk_error(NULL);
+			if (ft_strlen(argv[i]) > 11 || (ps_atoi(argv[n]) == \
+			ps_atoi(argv[i])))
+				stk_error();
 			i++;
 		}
 		n++;
 	}
+	return (1);
+}
+
+int	check_sorted(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (i < (argc - 1))
+	{
+		if (ps_atoi(argv[i]) < ps_atoi(argv[i + 1]))
+			i++;
+		else
+			return (0);
+	}
+	return (1);
 }

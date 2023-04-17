@@ -5,7 +5,7 @@ CC			=	cc
 CFLAGS		=	-Wall -Werror -Wextra
 RM			=	rm -rf
 
-C_FILES	=	push_swap.c stack.c sorters.c stack_utils.c stack_utils2.c utils.c
+C_FILES	=	push_swap.c stack.c raw_operations.c stack_utils.c stack_utils2.c utils.c sort.c
 
 SRCS		=	$(addprefix src/, $(C_FILES))
 
@@ -23,7 +23,7 @@ $(OBJS):	$(SRCS)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
 val:	$(NAME)
-	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./push_swap 7 3 5 1 2
+	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./push_swap 90 320 500 400
 
 clean:
 	@$(RM) obj

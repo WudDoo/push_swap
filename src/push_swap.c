@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:28:00 by mortins-          #+#    #+#             */
-/*   Updated: 2023/04/13 17:56:29 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:37:00 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,25 +52,32 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc < 2)
 		return (0);
-	check_list(argc, argv);
+	if (!(check_format(argc, argv)))
+		stk_error();
+	if (check_sorted(argc, argv))
+		return (0);
+	if (argc == 3)
+		return (write(1, "sa\n", 3));
+	if (special_cases(argc, argv))
+		return (0);
 	make_stack(argc, argv, &stack_a);
 	printf("%d\n\n", stk_size(stack_a));
 	print_stack(stack_a, stack_b);
 	/* swap(&stack_a); */
-	int	i = 0;
-	while (i++ < 5)
+/* 	int	i = 0;
+	while (i++ < 8)
 	{
 		push(&stack_a, &stack_b);
 		printf("Execute pb:\n\n");
 		print_stack(stack_a, stack_b);
 	}
 	i = 0;
-	while (i++ < 5)
+	while (i++ < 8)
 	{
 		push(&stack_b, &stack_a);
 		printf("Execute pa:\n\n");
 		print_stack(stack_a, stack_b);
-	}
+	} */
 	stk_clear(&stack_a);
 	stk_clear(&stack_b);
 }

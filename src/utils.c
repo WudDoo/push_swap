@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 17:22:04 by mortins-          #+#    #+#             */
-/*   Updated: 2023/04/13 17:24:43 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:11:52 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ps_atoi(const char *s, t_stack **stack)
+int	ps_atoi(const char *s)
 {
 	long	num;
 	int		i;
@@ -38,15 +38,15 @@ int	ps_atoi(const char *s, t_stack **stack)
 	if (s[i] == '+' || s[i] == '-')
 		i++;
 	if (!(s[i] >= '0' && s[i] <= '9'))
-		stk_error(stack);
+		stk_error();
 	while (s[i] >= '0' && s[i] <= '9')
 	{
 		num = (num * 10) + (s[i] - '0');
 		i++;
 		if (s[i] && !(s[i] >= '0' && s[i] <= '9'))
-			stk_error(stack);
+			stk_error();
 	}
 	if (num * neg > INT_MAX || num * neg < INT_MIN)
-		stk_error(stack);
+		stk_error();
 	return (num * neg);
 }

@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:28:05 by mortins-          #+#    #+#             */
-/*   Updated: 2023/04/13 17:52:27 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:39:00 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,20 @@ typedef struct s_stack
 }	t_stack;
 
 int		make_stack(int argc, char **argv, t_stack **stack);
-void	stk_error(t_stack **stack);
-void	check_list(int argc, char **argv);
+void	stk_error(void);
+int		check_format(int argc, char **argv);
+int		check_sorted(int argc, char **argv);
+
+int		special_cases(int argc, char **argv);
+void	case_3(char **argv);
+
 void	swap(t_stack **stack);
 void	rotate(t_stack **stack);
 void	rev_rotate(t_stack **stack);
 void	push(t_stack **src, t_stack **dest);
 
 int		ft_strlen(const char *s);
-int		ps_atoi(const char *s, t_stack **stack);
+int		ps_atoi(const char *s);
 
 t_stack	*stk_new(int data);
 int		stk_size(t_stack *lst);
