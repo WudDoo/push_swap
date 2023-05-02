@@ -1,47 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_reverse_rotate.c                                :+:      :+:    :+:   */
+/*   op_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 17:39:11 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/02 17:16:43 by mortins-         ###   ########.fr       */
+/*   Created: 2023/05/02 17:05:13 by mortins-          #+#    #+#             */
+/*   Updated: 2023/05/02 17:11:27 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	rev_rotate(t_stack **stack)
+void	rotate(t_stack **stack)
 {
 	t_stack	*rotate;
 	int		tmp;
 
-	rotate = stk_last(*stack);
-	tmp = stk_last(rotate)->data;
-	while (rotate->previous)
+	rotate = (*stack);
+	tmp = rotate->data;
+	while (rotate->next)
 	{
-		rotate = rotate->previous;
-		rotate->next->data = rotate->data;
+		rotate = rotate->next;
+		rotate->previous->data = rotate->data;
 	}
 	rotate->data = tmp;
 }
 
-void	rev_rotate_a(t_stack **stk_a)
+void	rotate_a(t_stack **stk_a)
 {
-	rev_rotate(stk_a);
-	write(1, "rra\n", 4);
+	rotate(stk_a);
+	write(1, "ra\n", 3);
 }
 
-void	rev_rotate_b(t_stack **stk_b)
+void	rotate_b(t_stack **stk_b)
 {
-	rev_rotate(stk_b);
-	write(1, "rrb\n", 4);
+	rotate(stk_b);
+	write(1, "rb\n", 3);
 }
 
-void	rev_rotate_r(t_stack **stk_a, t_stack **stk_b)
+void	rotate_r(t_stack **stk_a, t_stack **stk_b)
 {
-	rev_rotate(stk_a);
-	rev_rotate(stk_b);
-	write(1, "rrr\n", 4);
+	rotate(stk_a);
+	rotate(stk_b);
+	write(1, "rr\n", 3);
 }

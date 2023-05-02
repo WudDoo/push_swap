@@ -5,7 +5,7 @@ CC			=	cc
 CFLAGS		=	-Wall -Werror -Wextra
 RM			=	rm -rf
 
-C_FILES	=	push_swap.c stack.c raw_operations.c stack_utils.c stack_utils2.c utils.c sort.c
+C_FILES	=	push_swap.c stack.c op_swap.c op_push.c op_rotate.c op_reverse_rotate.c stack_utils.c stack_utils2.c utils.c sort.c
 
 SRCS		=	$(addprefix src/, $(C_FILES))
 
