@@ -31,11 +31,11 @@ void	case_3(t_stack **stk_a)
 	int	n2;
 	int	n3;
 
+	if (stk_size(*stk_a) != 3)
+		return ;
 	n1 = (*stk_a)->data;
 	n2 = (*stk_a)->next->data;
 	n3 = stk_last(*stk_a)->data;
-	if (n1 < n2 && n1 < n3 && n2 < n3)
-		return ;
 	if (n1 < n2 && n1 < n3 && n2 > n3)
 	{
 		rev_rotate_a(stk_a);
