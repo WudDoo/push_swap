@@ -6,26 +6,26 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:50:59 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/02 19:00:06 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:26:12 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-int	special_cases(t_stack **stk_a, t_stack **stk_b)
+int	sort(t_stack **stk_a, t_stack **stk_b)
 {
 	if (stk_size(*stk_a) > 5)
 		return (0);
 	if (stk_size(*stk_a) == 2)
 		write(1, "sa\n", 1);
 	else if (stk_size(*stk_a) == 3)
-		case_3(stk_a);
+		sort_3(stk_a);
 	else if (stk_size(*stk_a) > 3 && stk_size(*stk_a) < 6)
-		case_4_5(stk_a, stk_b);
+		sort_4_5(stk_a, stk_b);
 	return (1);
 }
 
-void	case_3(t_stack **stk_a)
+void	sort_3(t_stack **stk_a)
 {
 	int	n1;
 	int	n2;
@@ -54,23 +54,51 @@ void	case_3(t_stack **stk_a)
 	}
 }
 
-void	case_4_5(t_stack **stk_a, t_stack **stk_b)
+void	sort_4_5(t_stack **stk_a, t_stack **stk_b)
 {
-	int	i;
-
-	i = 0;
-	while (i < 1)
+	while ((!check_sorted(*stk_a)) && stk_size(*stk_a) != 3)
 	{
-		while ((*stk_a)->data != 1)
-			rotate_a(stk_a);
-		push_b(stk_a, stk_b);
-		while ((*stk_a)->data != 2)
-			rotate_a(stk_a);
-		push_b(stk_a, stk_b);
-		i++;
+		if (find_min(*stk_a) < 2)
+		{
+			while (find_min(*stk_a) != 0)
+				rotate_a(stk_a);
+			if (check_sorted(*stk_a))
+				break ;
+			push_b(stk_a, stk_b);
+		}
+		else
+		{
+			while (find_min(*stk_a) != 0)
+				rev_rotate_a(stk_a);
+			if (check_sorted(*stk_a))
+				break ;
+			push_b(stk_a, stk_b);
+		}
 	}
-	case_3(stk_a);
+	sort_3(stk_a);
 	push_a(stk_a, stk_b);
 	if (stk_b)
 		push_a(stk_a, stk_b);
+}
+
+int	find_min(t_stack *stack)
+{
+	int	buf;
+	int	pos_buf;
+	int	pos;
+
+	buf = stack->data;
+	pos = 0;
+	pos_buf = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		pos++;
+		if (stack && buf > stack->data)
+		{
+			buf = stack->data;
+			pos_buf = pos;
+		}
+	}
+	return (pos_buf);
 }

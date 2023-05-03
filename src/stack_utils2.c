@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 19:28:42 by mortins-          #+#    #+#             */
-/*   Updated: 2023/04/17 17:04:40 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:29:47 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ void	stk_add_front(t_stack **lst, t_stack *new)
 		new->next = *lst;
 	else
 		new->next = NULL;
-	new->previous = NULL;
 	*lst = new;
 }

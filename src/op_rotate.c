@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:05:13 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/02 17:11:27 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:41:15 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,10 @@
 void	rotate(t_stack **stack)
 {
 	t_stack	*rotate;
-	int		tmp;
 
 	rotate = (*stack);
-	tmp = rotate->data;
-	while (rotate->next)
-	{
-		rotate = rotate->next;
-		rotate->previous->data = rotate->data;
-	}
-	rotate->data = tmp;
+	*stack = (*stack)->next;
+	stk_add_back(stack, rotate);
 }
 
 void	rotate_a(t_stack **stk_a)

@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:55:19 by mortins-          #+#    #+#             */
-/*   Updated: 2023/04/17 17:36:42 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:28:09 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,24 @@ int	check_format(int argc, char **argv)
 	return (1);
 }
 
-int	check_sorted(int argc, char **argv)
+int	check_sorted(t_stack *stack)
 {
-	int	i;
+	t_stack	*buf;
 
-	i = 1;
-	while (i < (argc - 1))
+	buf = stack;
+	while (buf && buf->next)
 	{
-		if (ps_atoi(argv[i]) < ps_atoi(argv[i + 1]))
-			i++;
+		if (buf->data < buf->next->data)
+			buf = buf->next;
 		else
 			return (0);
 	}
 	return (1);
+}
+
+void	finish(t_stack **stk_a, t_stack **stk_b)
+{
+	stk_clear(stk_a);
+	stk_clear(stk_b);
+	exit (0);
 }

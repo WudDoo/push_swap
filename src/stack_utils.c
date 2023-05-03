@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:21:50 by mortins-          #+#    #+#             */
-/*   Updated: 2023/04/17 17:04:33 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:41:44 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ void	stk_add_back(t_stack **lst, t_stack *new)
 	if (!lst || !new)
 		return ;
 	if (stk_last(*lst))
-	{
-		new->previous = stk_last(*lst);
 		stk_last(*lst)->next = new;
-	}
 	else
 		*lst = new;
+	new->next = NULL;
 }
 
 t_stack	*stk_new(int data)
@@ -34,7 +32,6 @@ t_stack	*stk_new(int data)
 		return (NULL);
 	node->data = data;
 	node->next = NULL;
-	node->previous = NULL;
 	return (node);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:28:05 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/02 17:55:53 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:17:19 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 typedef struct s_stack
 {
-	struct s_stack	*previous;
 	int				data;
 	struct s_stack	*next;
 }	t_stack;
@@ -28,11 +27,13 @@ typedef struct s_stack
 int		make_stack(int argc, char **argv, t_stack **stack);
 void	stk_error(void);
 int		check_format(int argc, char **argv);
-int		check_sorted(int argc, char **argv);
+int		check_sorted(t_stack *stack);
+void	finish(t_stack **stk_a, t_stack **stk_b);
 
-int		special_cases(t_stack **stk_a, t_stack **stk_b);
-void	case_3(t_stack **stk_a);
-void	case_4_5(t_stack **stk_a, t_stack **stk_b);
+int		sort(t_stack **stk_a, t_stack **stk_b);
+void	sort_3(t_stack **stk_a);
+void	sort_4_5(t_stack **stk_a, t_stack **stk_b);
+int		find_min(t_stack *stack);
 
 void	swap(t_stack **stack);
 void	swap_a(t_stack **stk_a);
@@ -62,7 +63,4 @@ void	stk_clear(t_stack **lst);
 t_stack	*stk_last(t_stack *lst);
 void	stk_add_front(t_stack **lst, t_stack *new);
 void	stk_add_back(t_stack **lst, t_stack *new);
-
-void	print_stack(t_stack **stack_a, t_stack **stack_b);
-
 #endif

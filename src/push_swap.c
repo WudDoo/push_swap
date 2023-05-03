@@ -6,13 +6,13 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:28:00 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/02 18:11:40 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:17:34 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	print_stack(t_stack **stack_a, t_stack **stack_b)
+/* void	print_stack(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -41,7 +41,7 @@ void	print_stack(t_stack **stack_a, t_stack **stack_b)
 	printf("   _      _\n");
 	printf("   a      b\n");
 	printf("--------------\n");
-}
+}*/
 
 int	main(int argc, char **argv)
 {
@@ -54,19 +54,13 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!(check_format(argc, argv)))
 		stk_error();
-	if (check_sorted(argc, argv))
-		return (0);
 	if (argc == 3)
 		return (write(1, "sa\n", 3));
 	make_stack(argc, argv, &stk_a);
+	if (check_sorted(stk_a))
+		finish(&stk_a, &stk_b);
 /* 	printf("%d\n\n", stk_size(stk_a));
 	print_stack(&stk_a, &stk_b); */
-	if (special_cases(&stk_a, &stk_b))
-	{
-		stk_clear(&stk_a);	
-		stk_clear(&stk_b);
-		return (0);
-	}
-	stk_clear(&stk_a);
-	stk_clear(&stk_b);
+	sort(&stk_a, &stk_b);
+	finish(&stk_a, &stk_b);
 }

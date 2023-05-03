@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:39:11 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/02 17:16:43 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:44:53 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 void	rev_rotate(t_stack **stack)
 {
+	t_stack	*node;
 	t_stack	*rotate;
-	int		tmp;
 
+	node = *stack;
 	rotate = stk_last(*stack);
-	tmp = stk_last(rotate)->data;
-	while (rotate->previous)
-	{
-		rotate = rotate->previous;
-		rotate->next->data = rotate->data;
-	}
-	rotate->data = tmp;
+	while (node->next->next)
+		node = node->next;
+	node->next = NULL;
+	rotate->next = *stack;
+	*stack = rotate;
 }
 
 void	rev_rotate_a(t_stack **stk_a)
