@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 18:21:50 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/03 15:41:44 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:02:26 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 void	stk_add_back(t_stack **lst, t_stack *new)
 {
+	t_stack	*tmp;
+
+	tmp = stk_last(*lst);
 	if (!lst || !new)
 		return ;
-	if (stk_last(*lst))
-		stk_last(*lst)->next = new;
+	if (tmp)
+		tmp->next = new;
 	else
 		*lst = new;
-	new->next = NULL;
 }
 
 t_stack	*stk_new(int data)
 {
 	t_stack	*node;
 
-	node = (t_stack *)malloc(sizeof(t_stack));
+	node = malloc(sizeof(t_stack));
 	if (!node)
 		return (NULL);
 	node->data = data;
@@ -35,18 +37,19 @@ t_stack	*stk_new(int data)
 	return (node);
 }
 
-void	stk_clear(t_stack **lst)
+void	stk_free(t_stack **lst)
 {
 	t_stack	*tmp;
+	t_stack	*node;
 
-	tmp = *lst;
-	while (tmp)
+	node = *lst;
+	while (node)
 	{
-		*lst = (*lst)-> next;
-		tmp->data = 0;
+		tmp = node;
+		node = node->next;
 		free(tmp);
-		tmp = *lst;
 	}
+	free(lst);
 }
 
 t_stack	*stk_last(t_stack *lst)
@@ -60,12 +63,14 @@ t_stack	*stk_last(t_stack *lst)
 
 int	stk_size(t_stack *lst)
 {
-	int	count;
+	int		count;
+	t_stack	*tmp;
 
+	tmp = lst;
 	count = 0;
-	while (lst)
+	while (tmp)
 	{
-		lst = lst -> next;
+		tmp = tmp->next;
 		count++;
 	}
 	return (count);

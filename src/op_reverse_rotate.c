@@ -6,13 +6,13 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:39:11 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/03 15:44:53 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:04:37 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	rev_rotate(t_stack **stack)
+void	reverse_rotate(t_stack **stack)
 {
 	t_stack	*node;
 	t_stack	*rotate;
@@ -26,21 +26,21 @@ void	rev_rotate(t_stack **stack)
 	*stack = rotate;
 }
 
-void	rev_rotate_a(t_stack **stk_a)
+void	rra(t_stack **a)
 {
-	rev_rotate(stk_a);
+	reverse_rotate(a);
 	write(1, "rra\n", 4);
 }
 
-void	rev_rotate_b(t_stack **stk_b)
+void	rrb(t_stack **b)
 {
-	rev_rotate(stk_b);
+	reverse_rotate(b);
 	write(1, "rrb\n", 4);
 }
 
-void	rev_rotate_r(t_stack **stk_a, t_stack **stk_b)
+void	rrr(t_stack **a, t_stack **b)
 {
-	rev_rotate(stk_a);
-	rev_rotate(stk_b);
+	reverse_rotate(a);
+	reverse_rotate(b);
 	write(1, "rrr\n", 4);
 }

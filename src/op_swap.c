@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:40:42 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/02 17:21:35 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:54:04 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ void	swap(t_stack **stack)
 	(*stack)->next->data = tmp;
 }
 
-void	swap_a(t_stack **stk_a)
+void	sa(t_stack **a)
 {
-	swap(stk_a);
+	swap(a);
 	write(1, "sa\n", 3);
 }
 
-void	swap_b(t_stack **stk_b)
+void	sb(t_stack **b)
 {
-	swap(stk_b);
+	swap(b);
 	write(1, "sb\n", 3);
 }
 
-void	swap_s(t_stack **stk_a, t_stack **stk_b)
+void	ss(t_stack **a, t_stack **b)
 {
-	swap(stk_a);
-	swap(stk_b);
+	swap(a);
+	swap(b);
 	write(1, "ss\n", 3);
 }

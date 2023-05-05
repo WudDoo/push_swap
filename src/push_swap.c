@@ -6,19 +6,19 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:28:00 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/03 16:17:34 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:58:23 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-/* void	print_stack(t_stack **stack_a, t_stack **stack_b)
+void	print_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack	*a;
 	t_stack	*b;
 
-	a = *stack_a;
-	b = *stack_b;
+	a = stack_a;
+	b = stack_b;
 	while (a || b)
 	{
 		if (a && b)
@@ -41,26 +41,31 @@
 	printf("   _      _\n");
 	printf("   a      b\n");
 	printf("--------------\n");
-}*/
+}
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stk_a;
-	t_stack	*stk_b;
+	t_stack	**a;
+	t_stack	**b;
 
-	stk_a = NULL;
-	stk_b = NULL;
+	a = malloc(sizeof(t_stack));
+	if (!a)
+		return (0);
+	*a = NULL;
+	b = malloc(sizeof(t_stack));
+	if (!b)
+		return (0);
+	*b = NULL;
 	if (argc < 2)
 		return (0);
 	if (!(check_format(argc, argv)))
-		stk_error();
+		stk_error(a, b);
 	if (argc == 3)
 		return (write(1, "sa\n", 3));
-	make_stack(argc, argv, &stk_a);
-	if (check_sorted(stk_a))
-		finish(&stk_a, &stk_b);
-/* 	printf("%d\n\n", stk_size(stk_a));
-	print_stack(&stk_a, &stk_b); */
-	sort(&stk_a, &stk_b);
-	finish(&stk_a, &stk_b);
+	make_stack(argc, argv, a);
+	if (!check_sorted(a))
+		sort(a, b);
+	stk_free(b);
+	stk_free(a);
+	return (0);
 }
