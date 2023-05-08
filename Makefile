@@ -25,7 +25,7 @@ $(OBJ_DIR)/%.o:	$(SRCS)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
 val:	$(NAME)
-	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./push_swap 2 3 5 1 4
+	@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./push_swap 1 2 6 3 5 4
 
 clean:
 	@$(RM) $(OBJ_DIR)

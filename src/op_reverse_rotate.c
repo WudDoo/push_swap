@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:39:11 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/05 16:04:37 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:23:40 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	reverse_rotate(t_stack **stack)
 	t_stack	*rotate;
 
 	node = *stack;
-	rotate = stk_last(*stack);
+	rotate = ft_lstlast(*stack);
 	while (node->next->next)
 		node = node->next;
 	node->next = NULL;

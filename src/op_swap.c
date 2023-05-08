@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:40:42 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/05 15:54:04 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:59:48 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap(t_stack **stack)
 {
 	int	tmp;
 
-	if (stk_size(*stack) < 2)
+	if (ft_lstsize(*stack) < 2)
 		return ;
 	tmp = (*stack)->data;
 	(*stack)->data = (*stack)->next->data;

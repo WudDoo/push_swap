@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:05:13 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/05 19:04:09 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:23:34 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	rotate(t_stack **stack)
 	rotate = (*stack);
 	*stack = (*stack)->next;
 	rotate->next = NULL;
-	stk_last(*stack)->next = rotate;
+	ft_lstlast(*stack)->next = rotate;
 }
 
 void	ra(t_stack **a)

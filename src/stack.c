@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:55:19 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/05 17:57:53 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:25:49 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	make_stack(int argc, char **argv, t_stack **stack)
 				n++;
 			j++;
 		}
-		stk_add_back(stack, stk_new(bin_converter(n)));
+		ft_lstadd_back(stack, ft_lstnew(bin_converter(n)));
 		i++;
 	}
 	return (0);

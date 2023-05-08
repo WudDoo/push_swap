@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:50:59 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/05 18:44:09 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/08 19:11:43 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	sort(t_stack **a, t_stack **b)
 {
-	if (stk_size(*a) > 5)
-		return (0);
-	if (stk_size(*a) == 2)
+	if (ft_lstsize(*a) == 2)
 		write(1, "sa\n", 1);
-	else if (stk_size(*a) == 3)
+	else if (ft_lstsize(*a) == 3)
 		sort_3(a);
-	else if (stk_size(*a) > 3 && stk_size(*a) < 6)
+	else if (ft_lstsize(*a) == 4 || ft_lstsize(*a) == 5)
 		sort_4_5(a, b);
+	if (ft_lstsize(*a) >= 6)
+		my_radix(a, b);
 	return (1);
 }
 
@@ -31,11 +31,11 @@ void	sort_3(t_stack **a)
 	int	n2;
 	int	n3;
 
-	if (stk_size(*a) != 3)
+	if (ft_lstsize(*a) != 3)
 		return ;
 	n1 = (*a)->data;
 	n2 = (*a)->next->data;
-	n3 = stk_last(*a)->data;
+	n3 = ft_lstlast(*a)->data;
 	if (n1 < n2 && n1 < n3 && n2 > n3)
 	{
 		rra(a);
@@ -56,7 +56,7 @@ void	sort_3(t_stack **a)
 
 void	sort_4_5(t_stack **a, t_stack **b)
 {
-	while ((!check_sorted(a)) && stk_size(*a) != 3)
+	while ((!check_sorted(a)) && ft_lstsize(*a) != 3)
 	{
 		if (find_min(*a) < 2)
 		{
@@ -84,9 +84,9 @@ void	sort_4_5(t_stack **a, t_stack **b)
 int	find_min(t_stack *stack)
 {
 	t_stack	*tmp;
-	int	buf;
-	int	pos_buf;
-	int	pos;
+	int		buf;
+	int		pos_buf;
+	int		pos;
 
 	tmp = (stack);
 	buf = (stack)->data;
@@ -105,7 +105,27 @@ int	find_min(t_stack *stack)
 	return (pos_buf);
 }
 
-/* int	my_radix(t_stack **a, t_stack **b)
+void	my_radix(t_stack **a, t_stack **b)
 {
-	
-} */
+	int	i;
+	int	n;
+	int	x;
+
+	n = ft_lstsize(*a);
+	x = 1;
+	while (!check_sorted(a))
+	{
+		i = 0;
+		while (i < n)
+		{
+			if (((*a)->data / x) % 10 != 0)
+				ra(a);
+			else if (((*a)->data / x) % 10 == 0)
+				pb(a, b);
+			i++;
+		}
+		while (*b)
+			pa(a, b);
+		x *= 10;
+	}
+}

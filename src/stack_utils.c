@@ -1,58 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 18:21:50 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/05 19:02:26 by mortins-         ###   ########.fr       */
+/*   Created: 2023/04/11 19:28:42 by mortins-          #+#    #+#             */
+/*   Updated: 2023/05/08 16:57:37 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	stk_add_back(t_stack **lst, t_stack *new)
+void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
-	t_stack	*tmp;
-
-	tmp = stk_last(*lst);
 	if (!lst || !new)
 		return ;
-	if (tmp)
-		tmp->next = new;
-	else
-		*lst = new;
+	new->next = *lst;
+	*lst = new;
 }
 
-t_stack	*stk_new(int data)
-{
-	t_stack	*node;
-
-	node = malloc(sizeof(t_stack));
-	if (!node)
-		return (NULL);
-	node->data = data;
-	node->next = NULL;
-	return (node);
-}
-
-void	stk_free(t_stack **lst)
-{
-	t_stack	*tmp;
-	t_stack	*node;
-
-	node = *lst;
-	while (node)
-	{
-		tmp = node;
-		node = node->next;
-		free(tmp);
-	}
-	free(lst);
-}
-
-t_stack	*stk_last(t_stack *lst)
+t_stack	*ft_lstlast(t_stack *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -61,16 +29,36 @@ t_stack	*stk_last(t_stack *lst)
 	return (lst);
 }
 
-int	stk_size(t_stack *lst)
+t_stack	*ft_lstnew(int data)
 {
-	int		count;
-	t_stack	*tmp;
+	t_stack	*node;
 
-	tmp = lst;
+	node = (t_stack *)malloc(sizeof(t_stack));
+	if (!node)
+		return (NULL);
+	node->data = data;
+	node->next = NULL;
+	return (node);
+}
+
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
+{
+	if (!lst || !new)
+		return ;
+	if (ft_lstlast(*lst))
+		ft_lstlast(*lst)-> next = new;
+	else
+		*lst = new;
+}
+
+int	ft_lstsize(t_stack *lst)
+{
+	int	count;
+
 	count = 0;
-	while (tmp)
+	while (lst)
 	{
-		tmp = tmp->next;
+		lst = lst -> next;
 		count++;
 	}
 	return (count);
