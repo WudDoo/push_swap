@@ -66,5 +66,4 @@ t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 
-void	print_stack(t_stack *stack_a, t_stack *stack_b);
 #endif

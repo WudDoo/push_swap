@@ -12,37 +12,6 @@
 
 #include"push_swap.h"
 
-void	print_stack(t_stack *stack_a, t_stack *stack_b)
-{
-	t_stack	*a;
-	t_stack	*b;
-
-	a = stack_a;
-	b = stack_b;
-	while (a || b)
-	{
-		if (a && b)
-		{
-			printf("   %d      %d\n", a->data, b->data);
-			a = a->next;
-			b = b->next;
-		}
-		else if (a && !b)
-		{
-			printf("   %d\n", a->data);
-			a = a->next;
-		}
-		else if (!a && b)
-		{
-			printf("          %d\n", b->data);
-			b = b->next;
-		}
-	}
-	printf("   _      _\n");
-	printf("   a      b\n");
-	printf("--------------\n");
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	**a;
