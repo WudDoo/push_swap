@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:50:59 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/08 19:11:43 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/09 17:05:52 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	sort(t_stack **a, t_stack **b)
 {
 	if (ft_lstsize(*a) == 2)
-		write(1, "sa\n", 1);
+		write(1, "sa\n", 3);
 	else if (ft_lstsize(*a) == 3)
 		sort_3(a);
 	else if (ft_lstsize(*a) == 4 || ft_lstsize(*a) == 5)

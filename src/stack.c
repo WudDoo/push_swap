@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:55:19 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/08 16:25:49 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/09 18:25:13 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	stk_error(t_stack **a, t_stack **b)
 		free(a);
 	if (b)
 		free(b);
-	write(2, "ERROR\n", 6);
+	write(2, "Error\n", 6);
 	exit (0);
 }
 
