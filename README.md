@@ -1,3 +1,5 @@
 # push_swap
 
-nowhere near close to finished
+Finished !!!!
+
+Now i just have to actually make a ReadMe :P
