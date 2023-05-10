@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:55:19 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/09 18:25:13 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:03:41 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	make_stack(int argc, char **argv, t_stack **stack)
 void	stk_error(t_stack **a, t_stack **b)
 {
 	if (a)
-		free(a);
+		stk_free(a);
 	if (b)
-		free(b);
+		stk_free(b);
 	write(2, "Error\n", 6);
 	exit (0);
 }

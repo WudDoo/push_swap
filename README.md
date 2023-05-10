@@ -1,3 +1,3 @@
 # push_swap
 
-close to finished
+nowhere near close to finished

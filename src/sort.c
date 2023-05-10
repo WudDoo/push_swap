@@ -6,7 +6,7 @@
 /*   By: mortins- <mortins-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:50:59 by mortins-          #+#    #+#             */
-/*   Updated: 2023/05/09 17:05:52 by mortins-         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:47:16 by mortins-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	sort(t_stack **a, t_stack **b)
 		sort_3(a);
 	else if (ft_lstsize(*a) == 4 || ft_lstsize(*a) == 5)
 		sort_4_5(a, b);
-	if (ft_lstsize(*a) >= 6)
+	else if (ft_lstsize(*a) >= 6)
 		my_radix(a, b);
 	return (1);
 }
