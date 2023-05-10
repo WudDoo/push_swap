@@ -2,4 +2,4 @@
 
 Finished !!!!
 
-Now i just have to actually make a ReadMe :P
+Now i just have to actually make a README :P
